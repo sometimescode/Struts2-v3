@@ -32,7 +32,7 @@
     </style>
   </head>
   <body>
-    <s:include value="Menu.jsp" />
+    <s:include value="menu.jsp" />
 
     <main>
       <div id="formContainer">
@@ -41,7 +41,7 @@
         <s:form action="CheckUserCredentials">
           <s:textfield key="username" label="Username"/>
           <s:password key="password" label="Password"/>
-          <s:submit key="submit"/>  
+          <s:submit />  
         </s:form>
         <h4><s:property value="validationString"/></h4>
       </div>

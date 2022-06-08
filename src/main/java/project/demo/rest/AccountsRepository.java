@@ -22,11 +22,10 @@ public class AccountsRepository {
             connection = DriverManager.getConnection(URL, "root", "password");
 
             return connection;
-         } catch (SQLException e) {
-            //  error = e.toString();
-         } catch (ClassNotFoundException e) {
-            // error = e.toString();
-        }
+         } catch (Exception e) {
+            e.printStackTrace();
+         }
+
          return null;
     }
 
@@ -76,7 +75,7 @@ public class AccountsRepository {
 
                 int index = 0;
 
-                while(rs.next()){  
+                while(rs.next()){
                     Account account = new Account();
                     account.setId(rs.getInt(1));
                     account.setFirstName(rs.getString(2));

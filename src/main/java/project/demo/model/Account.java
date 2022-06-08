@@ -2,7 +2,6 @@ package project.demo.model;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
-
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 public class Account {
@@ -17,8 +16,10 @@ public class Account {
 
     }
 
-    public Account(int id, String firstName, String lastName, String email) {
+    public Account(int id, String username, String password, String firstName, String lastName, String email) {
         this.id = id;
+        this.username = username;
+        this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -114,8 +115,5 @@ public class Account {
                 .append("email", email)
                 .toString();
     }
-
-
-
 }
 

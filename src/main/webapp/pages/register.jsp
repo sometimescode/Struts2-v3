@@ -32,7 +32,7 @@
     </style>
   </head>
   <body>
-    <s:include value="Menu.jsp" />
+    <s:include value="menu.jsp" />
 
     <main>
       <div id="formContainer">
@@ -44,7 +44,7 @@
           <s:textfield name="accountBean.firstName" label="First Name" />
           <s:textfield name="accountBean.lastName" label="Last Name" />
           <s:textfield name="accountBean.email" label="Email Address" />
-          <s:submit key="submit"/>
+          <s:submit />
         </s:form>	
       </div>
     </main>

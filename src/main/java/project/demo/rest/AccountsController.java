@@ -21,29 +21,30 @@ public class AccountsController implements ModelDriven<Object> {
         try {
             map = accountRepository.findAllAccounts();
         } catch (Exception e) {
-            System.out.print("[error]" + e.toString());
+            e.printStackTrace();
         }
     }
 
-    public HttpHeaders create() throws Exception {
-        System.out.println("CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-        model = accountRepository.save(account);
-        System.out.println(account.toString());
+    public HttpHeaders create() {
+        try {
+            model = accountRepository.save(account);
+            System.out.println(account.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return new DefaultHttpHeaders("create");
     }
 
     public HttpHeaders show() {
-        System.out.println("SAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
         try {
             model = accountRepository.getAccountById(getId());
         } catch (Exception e) {
-
+            e.printStackTrace();
         }
         return new DefaultHttpHeaders("show");
     }
 
     public HttpHeaders index() {
-        System.out.println("IAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
         model = map;
         return new DefaultHttpHeaders("index").disableCaching();
     }    
@@ -53,7 +54,6 @@ public class AccountsController implements ModelDriven<Object> {
         return (model != null ? model : account);
     }
 
-    
     public Account getAccount() {
         return account;
     }
@@ -65,4 +65,8 @@ public class AccountsController implements ModelDriven<Object> {
     public int getId() {
         return id;
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }    
 }

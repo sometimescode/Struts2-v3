@@ -5,7 +5,7 @@
     <title>Home</title>
   </head>
   <body>
-    <s:include value="/WEB-INF/pages/Menu.jsp"/>
+    <s:include value="/pages/menu.jsp"/>
 
     <main>
       <header class="center">

@@ -59,7 +59,7 @@
 <nav>
     <ul>
         <li>
-          <s:url var="homePage" value="/" />
+          <s:url var="homePage" action="index" />
           <s:a href="%{homePage}">Home</s:a>
         </li>
         <li>

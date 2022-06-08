@@ -23,7 +23,7 @@
     </style>
   </head>
   <body>
-    <s:include value="Menu.jsp" />
+    <s:include value="menu.jsp" />
 
     <main>
       <header class="center">
