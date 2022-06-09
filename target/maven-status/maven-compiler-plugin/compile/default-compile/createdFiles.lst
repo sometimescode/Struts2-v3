@@ -1,0 +1,11 @@
+project\demo\action\News.class
+project\demo\action\Login.class
+project\demo\action\Register.class
+project\demo\action\About.class
+project\demo\action\Gallery.class
+project\demo\rest\AccountsController.class
+project\demo\rest\AccountsRepository.class
+project\demo\action\AddUserToDB.class
+project\demo\action\CheckUserCredentials.class
+project\demo\action\AccountList.class
+project\demo\model\Account.class

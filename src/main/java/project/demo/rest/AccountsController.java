@@ -19,10 +19,21 @@ public class AccountsController implements ModelDriven<Object> {
 
     {
         try {
+            map = null;
             map = accountRepository.findAllAccounts();
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public HttpHeaders update() {
+        try {
+            model = accountRepository.updateAccountById(getId(), account);
+            System.out.println(account.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return new DefaultHttpHeaders("update");
     }
 
     public HttpHeaders create() {
