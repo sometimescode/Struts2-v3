@@ -67,6 +67,10 @@
           <s:a href="%{newsPage}">News</s:a>
         </li>
         <li>
+          <s:url var="pexelsPage" action="Pexels" />
+          <s:a href="%{pexelsPage}">Pexels</s:a>
+        </li>
+        <li>
           <s:url var="galleryPage" action="Gallery" />
           <s:a href="%{galleryPage}">Gallery</s:a>
         </li>

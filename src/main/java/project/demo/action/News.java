@@ -16,6 +16,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.opensymphony.xwork2.ActionSupport;
 
 import project.demo.model.Language;
+import project.demo.model.NewsResponse;
 
 public class News extends ActionSupport {
     private NewsResponse newsResponse;

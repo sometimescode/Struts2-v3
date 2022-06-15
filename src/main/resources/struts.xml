@@ -24,6 +24,10 @@
             <result>/pages/news.jsp</result>
         </action>
 
+        <action name="Pexels" class="project.demo.action.Pexels">
+            <result>/pages/pexels.jsp</result>
+        </action>
+
         <action name="Gallery" class="project.demo.action.Gallery">
             <result>/pages/gallery.jsp</result>
         </action>
