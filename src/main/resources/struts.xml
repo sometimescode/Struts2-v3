@@ -28,6 +28,13 @@
             <result>/pages/pexels.jsp</result>
         </action>
 
+        <action name="Pexels2" class="project.demo.action.Pexels2">
+            <result>/pages/pexels2.jsp</result>
+        </action>
+        <action name="Pexels2Search" class="project.demo.action.Pexels2" method="searchAPI">
+            <result>/pages/pexels2.jsp</result>
+        </action>
+
         <action name="Gallery" class="project.demo.action.Gallery">
             <result>/pages/gallery.jsp</result>
         </action>

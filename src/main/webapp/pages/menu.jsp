@@ -38,11 +38,10 @@
         text-decoration: none;
       }
 
-      /* Change the link color to #111 (black) on hover */
       nav li a:hover {
         background-color: #111;
       }
-
+/*
       main {
         margin: 30px 350px;
       }
@@ -51,10 +50,9 @@
         padding: 0px 15px;
       }
 
-      /* Validation styling */
       span.errorMessage {
         color: red;
-      }
+      } */
 </style>
 <nav>
     <ul>
@@ -70,6 +68,10 @@
           <s:url var="pexelsPage" action="Pexels" />
           <s:a href="%{pexelsPage}">Pexels</s:a>
         </li>
+        <li>
+          <s:url var="pexels2Page" action="Pexels2" />
+          <s:a href="%{pexels2Page}">Pexels2</s:a>
+        </li>        
         <li>
           <s:url var="galleryPage" action="Gallery" />
           <s:a href="%{galleryPage}">Gallery</s:a>
