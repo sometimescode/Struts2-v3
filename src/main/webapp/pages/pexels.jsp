@@ -34,12 +34,14 @@
       <s:property value="newsResponse.status"/>
       <s:property value="urlQuery"/> -->
         <div>
+            <s:property value="photoId" />
+            <s:property value="error" />
             <s:property value="photoResponse" />
 
             <!-- <s:property value="imgSrc" /> -->
 
 
-            <img src="${photoResponse.url}" />
+            <img src="${photoResponse.src.original}" alt="${photoResponse.alt}" />
 
             <!-- <img src="${imgSrc}" /> -->
 

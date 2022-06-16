@@ -31,7 +31,10 @@
         <action name="Pexels2" class="project.demo.action.Pexels2">
             <result>/pages/pexels2.jsp</result>
         </action>
-        <action name="Pexels2Search" class="project.demo.action.Pexels2" method="searchAPI">
+        <action name="Pexels2Search" class="project.demo.action.Pexels2" method="searchByUserQuery">
+            <result>/pages/pexels2.jsp</result>
+        </action>
+        <action name="Pexels2FetchPage" class="project.demo.action.Pexels2" method="fetchPage">
             <result>/pages/pexels2.jsp</result>
         </action>
 

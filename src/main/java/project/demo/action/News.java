@@ -11,7 +11,9 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -59,10 +61,17 @@ public class News extends ActionSupport {
  
             BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
             String output;
-            while ((output = br.readLine()) != null) {
-                ObjectMapper mapper = new ObjectMapper();
-                newsResponse = mapper.readValue(output, NewsResponse.class);
-            }
+
+            output =  br.lines().collect(Collectors.joining());
+            ObjectMapper mapper = new ObjectMapper();
+            mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+            newsResponse = mapper.readValue(output, NewsResponse.class);
+
+            // while ((output = br.readLine()) != null) {
+            //     ObjectMapper mapper = new ObjectMapper();
+            //     mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+            //     newsResponse = mapper.readValue(output, NewsResponse.class);
+            // }
             conn.disconnect();
         } catch (Exception e) {
             e.printStackTrace();

@@ -18,37 +18,40 @@ public class Pexels extends ActionSupport{
     private String error;
     private String orientation = "original";
     private String [] orientationOptions = {"original", "portrait", "landscape"};
-
+    private int photoId = -1;
     // private String imgSrc; this together with togglePhotoSource can be used if actually fetching resized values (something called DPR is modified as well as the width and height)
 
     public String execute() throws Exception {
-        System.out.println("AAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
-        try {
- 
-            URL url = new URL("https://api.pexels.com/v1/photos/10969502");        
-
-            urlQuery = url.toString();
-
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setRequestMethod("GET");
-            conn.setRequestProperty("Authorization", "563492ad6f9170000100000153899aa6e1494be5a16c0c67c06637c0");
- 
-            if (conn.getResponseCode() != 200) {
-                throw new RuntimeException("Failed : HTTP error code : "
-                        + conn.getResponseCode());
+        if(photoId != -1) {
+            System.out.println("AAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
+            try {
+     
+                URL url = new URL("https://api.pexels.com/v1/photos/" + photoId);        
+    
+                urlQuery = url.toString();
+    
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                conn.setRequestMethod("GET");
+                conn.setRequestProperty("Authorization", "563492ad6f9170000100000153899aa6e1494be5a16c0c67c06637c0");
+     
+                if (conn.getResponseCode() != 200) {
+                    throw new RuntimeException("Failed : HTTP error code : "
+                            + conn.getResponseCode());
+                }
+     
+                BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
+                String output;
+                while ((output = br.readLine()) != null) {
+                    ObjectMapper mapper = new ObjectMapper();
+                    photoResponse = mapper.readValue(output, PhotoResponse.class);
+                }
+                conn.disconnect();
+            } catch (Exception e) {
+                e.printStackTrace();
+                error = e.toString();
             }
- 
-            BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
-            String output;
-            while ((output = br.readLine()) != null) {
-                ObjectMapper mapper = new ObjectMapper();
-                photoResponse = mapper.readValue(output, PhotoResponse.class);
-            }
-            // imgSrc = photoResponse.getSrc().getOriginal();
-            conn.disconnect();
-        } catch (Exception e) {
-            e.printStackTrace();
-            error = e.toString();
+        } else {
+            error = "Invalid photo id value.";
         }
         return SUCCESS;
     }
@@ -105,7 +108,11 @@ public class Pexels extends ActionSupport{
         this.orientationOptions = orientationOptions;
     }
 
-    // public String getImgSrc() {
-    //     return imgSrc;
-    // }
+    public int getPhotoId() {
+        return photoId;
+    }
+
+    public void setPhotoId(int photoId) {
+        this.photoId = photoId;
+    }
 }
